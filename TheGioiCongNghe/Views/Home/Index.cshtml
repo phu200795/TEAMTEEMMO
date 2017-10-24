@@ -36,7 +36,7 @@
     </div>
 </div>
 <div class="section" style="
-    height: 1000px;
+    height: 2300px;
 ">
     <div class="col-md-12">
         <div class="col-md-3">
@@ -78,6 +78,7 @@
         <div class="col-md-9">
 @foreach (var items in Model.Product_Categorys.Where(c => c.Parent_Id == 0))
 {
+    var con = Model.Product_Categorys.Where(x => x.Parent_Id == items.Id).ToList();
             <div class="row ors_product_sp">
                 <section id="product_list">
 
@@ -88,8 +89,10 @@
                         <div class="list_row">
                             @foreach (var item in @ViewBag.Product_Managers)
                             {
-                                if (item.Cat_Id == items.Id )
+                                foreach (var itemm in con)
                                 {
+                                    if (item.Cat_Id == itemm.Id)
+                                    {
                                 <div class="col-md-3">
                                     <div class="item">
                                         <a href="/Admin/DetailProductManager/@item.Id"><img class="img-responsive height" src="@Url.Content(@item.Product_image)" /></a>
@@ -100,6 +103,20 @@
                                         </p>
                                     </div>
                                 </div>
+                                    }
+                                }
+                                if (item.Cat_Id == items.Id)
+                                {
+                                    <div class="col-md-3">
+                                        <div class="item">
+                                            <a href="/Admin/DetailProductManager/@item.Id"><img class="img-responsive height" src="@Url.Content(@item.Product_image)" /></a>
+                                            <h4 class="product-title">@item.Title</h4>
+                                            <span>@item.Product_Price<sup>đ</sup></span>
+                                            <p>
+                                                <button type="submit" class="btn btn-danger" onclick="AddToCart('@item.Id')" value="Giỏ Hàng">Thêm Giỏ Hàng</button>
+                                            </p>
+                                        </div>
+                                    </div>
                                 }
                             }
 
