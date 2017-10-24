@@ -88,7 +88,15 @@ namespace TheGioiCongNghe.Controllers
             var product_manager = dbContext.Product_managers;
             return View(product_manager);
         }
-
+        public ActionResult DetailProductManager(int id)
+        {
+            var manager = dbContext.Product_managers.Where(m => m.Id == id);
+            var category = dbContext.Product_categorys;
+            ProductViewModels viewModel = new ProductViewModels();
+            viewModel.Product_Managers = manager;
+            viewModel.Product_Categorys = category;
+            return View(viewModel);
+        }
         //Tao Manager
         public ActionResult CreateProductManager()
         {
