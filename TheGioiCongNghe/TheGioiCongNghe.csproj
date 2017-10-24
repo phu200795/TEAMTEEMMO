@@ -323,6 +323,7 @@
     <Content Include="Views\Cart\Payment.cshtml" />
     <Content Include="Views\Admin\DetailProductManager.cshtml" />
     <Content Include="Views\Admin\DetailArticleManager.cshtml" />
+    <Content Include="Views\Home\Product.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
