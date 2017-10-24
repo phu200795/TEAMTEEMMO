@@ -41,6 +41,16 @@ namespace TheGioiCongNghe.Controllers
             
         }
         
-        
+        public ActionResult Product()
+        {
+            var cha = dbContext.Product_categorys.ToList();
+            var article_manager = dbContext.Article_managers.ToList();
+            var product_manager = dbContext.Product_managers.ToList();
+            ProductViewModels viewModel = new ProductViewModels();
+            viewModel.Product_Categorys = cha;
+            ViewBag.Product_Managers = product_manager;
+            viewModel.Article_Managers = article_manager;
+            return View(viewModel);
+        }
     }
 }

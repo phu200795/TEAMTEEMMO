@@ -1,8 +1,99 @@
-﻿
+﻿@model TheGioiCongNghe.ViewModels.ProductViewModels
 @{
     ViewBag.Title = "Product";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Product</h2>
+<div class="section" style="height:2400px">
+    <div class="col-md-12">
+        <div class="col-md-3">
+            <div class="col-md-12">
+                <div class="row ors_product_category">
+                    <div class="col-md-12 addon_title">
+                        <div class="row">Product Category</div>
+                    </div>
+                    <div class="prd_cat">
+                        <ul>
+                            @foreach (var item in Model.Product_Categorys.Where(c => c.Parent_Id == 0))
+                            {
 
+                                <li class="has_sub">
+                                    <a>@item.Title</a>
+                                    <div class="prd_sub_cat">
+
+                                        <ul class="sub_lv1">
+                                            @foreach (var items in Model.Product_Categorys)
+                                            {
+                                                if (item.Id == items.Parent_Id)
+                                                {
+                                                    <li><a>@items.Title</a></li>
+                                                }
+                                            }
+
+                                        </ul>
+
+                                    </div>
+                                </li>
+
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            @foreach (var items in Model.Product_Categorys.Where(c => c.Parent_Id == 0))
+            {
+                var child = Model.Product_Categorys.Where(x => x.Parent_Id == items.Id).ToList();
+                <div class="row ors_product_sp">
+                    <section id="product_list">
+
+                        <div class="col-md-12 addon_title">
+                            <div class="row">@items.Title</div>
+                        </div>
+                        <div class="ors_product_list ">
+                            <div class="list_row">
+                                @foreach (var item in @ViewBag.Product_Managers)
+                                {
+                                    foreach(var itemm in child)
+                                    {
+                                        if (item.Cat_Id == itemm.Id)
+                                        {
+                                            <div class="col-md-3">
+                                                <div class="item">
+                                                    <a href="/Admin/DetailProductManager/@item.Id"><img class="img-responsive height" src="@Url.Content(@item.Product_image)" /></a>
+                                                    <h4 class="product-title">@item.Title</h4>
+                                                    <span>@item.Product_Price<sup>đ</sup></span>
+                                                    <p>
+                                                        <button type="submit" class="btn btn-danger" onclick="AddToCart('@item.Id')" value="Giỏ Hàng">Thêm Giỏ Hàng</button>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    if (item.Cat_Id == items.Id)
+                                    {
+                                        <div class="col-md-3">
+                                            <div class="item">
+                                                <a href="/Admin/DetailProductManager/@item.Id"><img class="img-responsive height" src="@Url.Content(@item.Product_image)" /></a>
+                                                <h4 class="product-title">@item.Title</h4>
+                                                <span>@item.Product_Price<sup>đ</sup></span>
+                                                <p>
+                                                    <button type="submit" class="btn btn-danger" onclick="AddToCart('@item.Id')" value="Giỏ Hàng">Thêm Giỏ Hàng</button>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+
+                            </div>
+                        </div>
+
+                    </section>
+                </div>
+            }
+        </div>
+
+    </div>
+</div>
