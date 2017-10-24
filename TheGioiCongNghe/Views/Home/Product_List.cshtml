@@ -1,10 +1,10 @@
 ﻿@model TheGioiCongNghe.ViewModels.ProductViewModels
 @{
-    ViewBag.Title = "Product";
+    ViewBag.Title = "Product_List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="section" style="height:2400px">
+<div class="section" style="height:1000px">
     <div class="col-md-12">
         <div class="col-md-3">
             <div class="col-md-12">
@@ -14,7 +14,7 @@
                     </div>
                     <div class="prd_cat">
                         <ul>
-                            @foreach (var item in Model.Product_Categorys.Where(c => c.Parent_Id == 0))
+                            @foreach (var item in Model.Product_categoryss.Where(c => c.Parent_Id == 0))
                             {
 
                                 <li class="has_sub">
@@ -22,7 +22,7 @@
                                     <div class="prd_sub_cat">
 
                                         <ul class="sub_lv1">
-                                            @foreach (var items in Model.Product_Categorys)
+                                            @foreach (var items in Model.Product_categoryss)
                                             {
                                                 if (item.Id == items.Parent_Id)
                                                 {
@@ -43,7 +43,7 @@
         </div>
 
         <div class="col-md-9">
-            @foreach (var items in Model.Product_Categorys.Where(c => c.Parent_Id == 0))
+            @foreach (var items in Model.Product_Categorys)
             {
                 var child = Model.Product_Categorys.Where(x => x.Parent_Id == items.Id).ToList();
                 <div class="row ors_product_sp">
@@ -54,9 +54,9 @@
                         </div>
                         <div class="ors_product_list ">
                             <div class="list_row">
-                                @foreach (var item in @ViewBag.Product_Managers)
+                                @foreach (var item in Model.Product_Managers)
                                 {
-                                    foreach(var itemm in child)
+                                    foreach (var itemm in child)
                                     {
                                         if (item.Cat_Id == itemm.Id)
                                         {
@@ -97,3 +97,4 @@
 
     </div>
 </div>
+

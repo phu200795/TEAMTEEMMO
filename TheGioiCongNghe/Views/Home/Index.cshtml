@@ -49,23 +49,25 @@
                         <ul>
                             @foreach (var item in Model.Product_Categorys.Where(c=>c.Parent_Id==0))
                             {
-                                
+                                var child = Model.Product_Categorys.Where(x => x.Parent_Id == item.Id).ToList();
                                 <li class="has_sub">
-                                    <a>@item.Title</a>
+                                    <a href="/Home/Product_List/@item.Id"> @item.Title</a>
+                                    @if (child != null)
+                                    {
                                     <div class="prd_sub_cat">
                                        
                                             <ul class="sub_lv1">
-                                              @foreach (var items in Model.Product_Categorys)
+                                              @foreach (var items in child)
                                               {
-                                                  if (item.Id == items.Parent_Id)
-                                                  {
-                                                <li><a>@items.Title</a></li>
-                                                  }
+                                                 
+                                                <li><a href="/Home/Product_List/@items.Id">@items.Title</a></li>
+                                                  
                                               }
 
                                             </ul>
                                         
                                     </div>
+                                    }
                                 </li>
 
                             }
