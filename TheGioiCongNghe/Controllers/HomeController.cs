@@ -62,5 +62,14 @@ namespace TheGioiCongNghe.Controllers
             ViewBag.Product_Managers = product_manager;
             return View(viewModel);
         }
+        public ActionResult Article_List()
+        {
+            var article_category = dbContext.Article_categorys.ToList();
+            var article_manager = dbContext.Article_managers.ToList();
+            ProductViewModels viewModel = new ProductViewModels();
+            viewModel.Article_Managers = article_manager;
+            viewModel.Article_Categorys = article_category;
+            return View(viewModel);
+        }
     }
 }
