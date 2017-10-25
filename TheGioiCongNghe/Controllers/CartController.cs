@@ -145,8 +145,13 @@ namespace TheGioiCongNghe.Controllers
                 dbContext.Order_Detailss.Add(orderDetail);
             }
             dbContext.SaveChanges();
-            
-            return RedirectToAction("Index", "Home");
+            Session["ShoppingCart"] = null;
+
+            return RedirectToAction("Complete", "Cart");
+        }
+        public ActionResult Complete()
+        {
+            return View();
         }
     }
 }

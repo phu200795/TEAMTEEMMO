@@ -13,5 +13,6 @@ namespace TheGioiCongNghe.ViewModels
         public IEnumerable<Article_manager> Article_Managers { get; set; }
         public IEnumerable<Article_category> Article_Categorys { get; set; }
         public IEnumerable<Product_category> Product_categoryss { get; set; }
+        public IEnumerable<Article_manager> Article_Managerss { get; set; }
     }
 }

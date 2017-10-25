@@ -19,31 +19,7 @@
                         <article class="content">
                             @item.Article_Description
                         </article>
-                        <script>
-                            $(window).load(function () {
-                                var a = $("article.content img");
-                                for (i = 0; i
-                                    < a.length; i++) {
-                                    if (typeof $(a[i]).attr("alt") !== typeof undefined && $(a[i]).attr("alt") !== false) {
-                                        if ($(a[i]).attr("alt") != "") {
-                                            var b = "";
-                                            if ($(a[i]).parent().css("text-align") == "center") {
-                                                b = "margin: 0 auto;";
-                                            }
-                                            if ($(a[i]).parent().css("text-align") == "right") {
-                                                b = "margin: 0 0 0 auto;";
-                                            }
-                                            $("
-                                                < br >
-                                                <span style='"+b+"text-align:left;background: #f6f7f3;padding: 5px 10px;display:block;width:"+$(a[i]).width()+"px' class='ors_img_caption' >"+$(a[i]).attr("alt")+"</span>").insertAfter($(a[i]));
-                				                        }
-                                    }
-
-                                }
-
-                            });
-
-                        </script>
+                       
                     </div>
                 }
                 <div class="col-md-3 ">
@@ -60,7 +36,7 @@
                                     <li>
                                         <a href="/Admin/DetailArticleManager/@item.Id">
                                             @item.Title
-                                            <span>2</span>
+                                            
                                         </a>
                                     </li>
                                 }
@@ -71,14 +47,7 @@
                     <!-- / row-name -->
                     <div class="row ors_new_blog" id="layout_89">
                         <div id="fb-root"></div>
-                        <script>
-(function (d, s, id) {
-                                var js, fjs = d.getElementsByTagName(s)[0];
-                                if (d.getElementById(id)) return;
-                                js = d.createElement(s); js.id = id;
-                                js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.9&appId=";
-                                fjs.parentNode.insertBefore(js, fjs);
-                            }(document, "script", "facebook-jssdk"));</script>
+         
                         <div class="item-article-category">
                             <div class="col-md-12 addon_title">
                                 <div class="row">Blog</div>
@@ -117,4 +86,30 @@
         </div>
     </div>
 </div>
-</div>
+@section Scripts
+    {
+<script>
+         $(window).load(function () {
+             var a = $("article.content img");
+             for (i = 0; i
+                 < a.length; i++) {
+                 if (typeof $(a[i]).attr("alt") !== typeof undefined && $(a[i]).attr("alt") !== false) {
+                     if ($(a[i]).attr("alt") != "") {
+                         var b = "";
+                         if ($(a[i]).parent().css("text-align") == "center") {
+                             b = "margin: 0 auto;";
+                         }
+                         if ($(a[i]).parent().css("text-align") == "right") {
+                             b = "margin: 0 0 0 auto;";
+                         }
+                         $("< br ><span style='"+b+"text-align:left;background: #f6f7f3;padding: 5px 10px;display:block;width:"+$(a[i]).width()+"px' class='ors_img_caption' >"+$(a[i]).attr("alt")+"</span>").insertAfter($(a[i]));
+                         }
+                 }
+
+             }
+
+         });
+
+</script>
+
+    }

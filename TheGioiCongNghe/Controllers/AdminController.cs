@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNet.Identity;
 using System.IO;
 using System.Linq;
 using System.Web;
+
 using System.Web.Mvc;
 using TheGioiCongNghe.Models;
 using TheGioiCongNghe.ViewModels;
@@ -90,8 +92,8 @@ namespace TheGioiCongNghe.Controllers
         }
         public ActionResult DetailProductManager(int id)
         {
-            var manager = dbContext.Product_managers.Where(m => m.Id == id);
-            var category = dbContext.Product_categorys;
+            var manager = dbContext.Product_managers.Where(m => m.Id == id).ToList();
+            var category = dbContext.Product_categorys.ToList(); 
             ProductViewModels viewModel = new ProductViewModels();
             viewModel.Product_Managers = manager;
             viewModel.Product_Categorys = category;
@@ -384,6 +386,8 @@ namespace TheGioiCongNghe.Controllers
             dbContext.SaveChanges();
             return RedirectToAction("ListArticleManager", "Admin");
         }
+       
+      
     }
 }
 

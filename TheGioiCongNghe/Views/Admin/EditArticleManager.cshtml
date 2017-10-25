@@ -5,14 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>EditArticleManager</h2>
+<h2>Edi tArticle Manager</h2>
 
 @using (Html.BeginForm("EditArticleManager", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Article_manager</h4>
+        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
@@ -65,7 +65,7 @@
 
         <div class="form-group">
             <div class="col-md-10">
-                <img src="~/Content/images/noimage.png" height="300" width="300" id="xemTruoc" />
+                <img src="@Url.Content(Model.Article_image)" height="300" width="300" id="xemTruoc" />
                 <input type="file" name="chonHinh" accept="image/jpeg, image/png, image/jpg" width="300" height="300" onchange="ChonHinh(this, document.getElementById('xemTruoc'))" />
             </div>
         </div>

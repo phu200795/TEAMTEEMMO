@@ -9,7 +9,7 @@
     <h2>Danh Mục Tin Tức</h2>
 </div>
 <p>
-    @Html.ActionLink("Create New", "CreateArticleManager")
+    <button class="btn btn-success">@Html.ActionLink("Create New", "CreateArticleManager")</button>
 </p>
 <table class="table">
     <tr>
@@ -19,24 +19,16 @@
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Article_Alias)
-        </th>
+       
         <th>
             @Html.DisplayNameFor(model => model.Cat_Id)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Article_Description)
-        </th>
+      
         <th>
             @Html.DisplayNameFor(model => model.DateTime)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Article_image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
+       
+       
         <th></th>
     </tr>
 
@@ -49,28 +41,20 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Article_Alias)
-            </td>
+          
             <td>
                 @Html.DisplayFor(modelItem => item.Cat_Id)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Article_Description)
-            </td>
+          
             <td>
                 @Html.DisplayFor(modelItem => item.DateTime)
             </td>
+           
+            
             <td>
-                @Html.DisplayFor(modelItem => item.Article_image)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "EditArticleManager", new { id = item.Id }) |
-                @Html.ActionLink("Details", "DetailArticleManager", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "DeleteArticleManager", new { id = item.Id })
+                <a href="/Admin/EditArticleManager/@item.Id"><button class=" btn btn-info">Edit</button></a>
+
+                <a href="/Admin/DeleteArticleManager/@item.Id"><button class=" btn btn-danger">Delete</button></a>
             </td>
         </tr>
     }

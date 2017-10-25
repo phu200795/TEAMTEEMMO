@@ -122,18 +122,18 @@
                         </div>
                         <div class="prd_cat">
                             <ul>
-                                @foreach (var item in Model.Product_Categorys)
+                                @foreach (var item in Model.Product_Categorys.Where(c=>c.Parent_Id==0))
                                 {
-
+                                    var child = Model.Product_Categorys.Where(x => x.Parent_Id == item.Id).ToList();
                                     <li class="has_sub">
-                                        <a>@item.Title</a>
+                                        <a href="/Home/Product_List/@item.Id">@item.Title</a>
                                         <div class="prd_sub_cat">
 
                                             <ul class="sub_lv1">
-
-
-                                                <li><a></a></li>
-
+                                                @foreach (var items in child)
+                                                {
+                                                <li><a href="/Home/Product_List/@items.Id">@items.Title</a></li>
+                                                }
 
                                             </ul>
 

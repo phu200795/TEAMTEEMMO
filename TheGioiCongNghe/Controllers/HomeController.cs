@@ -71,5 +71,6 @@ namespace TheGioiCongNghe.Controllers
             viewModel.Article_Categorys = article_category;
             return View(viewModel);
         }
+        
     }
 }

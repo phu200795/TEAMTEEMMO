@@ -97,4 +97,19 @@
 
     </div>
 </div>
+@section Scripts
+    {
 
+    <script>
+            function AddToCart(Id) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/Cart/AddToCart',
+                    data: { id: Id },
+                    success: function (data) {
+                        $("#Cart_Amount").html(data.ItemAmount);
+                    }
+                });
+    }
+    </script>
+}

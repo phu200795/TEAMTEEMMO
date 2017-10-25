@@ -10,7 +10,7 @@
 </div>
 
 <p>
-    @Html.ActionLink("Create New", "CreateProductManager")
+    <button class="btn btn-success">@Html.ActionLink("Create New", "CreateProductManager")</button>
 </p>
 <table class="table">
     <tr>
@@ -20,9 +20,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Product_Alias)
-        </th>
+   
         <th>
             @Html.DisplayNameFor(model => model.Cat_Id)
         </th>
@@ -48,9 +46,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product_Alias)
-            </td>
+        
             <td>
                 @Html.DisplayFor(modelItem => item.Cat_Id)
             </td>
@@ -66,9 +62,9 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditProductManager", new { id = item.Id }) |
-                @Html.ActionLink("Details", "DetailProductManager", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "DeleteProductManager", new { id = item.Id })
+               <a href="/Admin/EditProductManager/@item.Id"><button class=" btn btn-info" >Edit</button></a>
+                
+                <a href="/Admin/DeleteProductManager/@item.Id"><button class=" btn btn-danger">Delete</button></a>
             </td>
         </tr>
     }

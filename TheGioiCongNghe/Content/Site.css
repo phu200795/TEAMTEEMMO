@@ -384,10 +384,10 @@ h2 {
 }
 
 
-h1 {
+.carousel-caption h1 {
     color: #F90
 }
 
-p {
+.carousel-caption p {
     color: #0C0
 }

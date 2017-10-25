@@ -8,7 +8,7 @@
     <h2>Danh Mục Loại Tin Tức</h2>
 </div>
 <p>
-    @Html.ActionLink("Create New", "CreateArticleCategory")
+    <button class="btn btn-success">@Html.ActionLink("Create New", "CreateArticleCategory")</button>
 </p>
 <table class="table">
     <tr>
@@ -37,9 +37,9 @@
                 @Html.DisplayFor(modelItem => item.Parent_Id)
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditArticleCategory", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "DeleteArticleCategory", new { id = item.Id })
+                <a href="/Admin/EditArticleCategory/@item.Id"><button class=" btn btn-info">Edit</button></a>
+
+                <a href="/Admin/DeleteArticleCategory/@item.Id"><button class=" btn btn-danger">Delete</button></a>
             </td>
         </tr>
     }
